@@ -1,36 +1,199 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shybo
 
-## Getting Started
+Корпоративний сайт будівельної компанії, створений на Next.js.
 
-First, run the development server:
+## Про проєкт
+
+Shybo — адаптивний інформаційний сайт будівельної компанії. Сайт презентує послуги компанії, виконані проєкти, переваги, етапи співпраці та контактну інформацію.
+
+Проєкт не передбачає:
+
+* авторизації користувачів;
+* особистого кабінету;
+* адміністративної панелі;
+* бази даних;
+* інтернет-магазину;
+* онлайн-оплати.
+
+Увесь основний контент зберігається безпосередньо у файлах проєкту.
+
+## Основні цілі
+
+* презентувати будівельну компанію та її послуги;
+* отримувати заявки від потенційних клієнтів;
+* демонструвати виконані роботи;
+* забезпечити хорошу адаптивність;
+* створити технічно підготовлений до SEO сайт;
+* забезпечити швидке завантаження сторінок.
+
+## Технології
+
+* Next.js;
+* React;
+* TypeScript;
+* App Router;
+* CSS Modules;
+* ESLint;
+* React Compiler;
+* `next/image`;
+* `next/font`.
+
+Tailwind CSS у проєкті не використовується.
+
+## Заплановані сторінки
+
+* `/` — головна сторінка;
+* `/services` — усі послуги компанії;
+* `/projects` — виконані проєкти;
+* `/about` — інформація про компанію;
+* `/contacts` — контакти та форма заявки.
+
+Окремі сторінки для кожної послуги на першому етапі не створюються.
+
+## Головна сторінка
+
+Орієнтовна структура головної сторінки:
+
+1. Header.
+2. Hero-секція.
+3. Коротка інформація про компанію.
+4. Послуги.
+5. Переваги компанії.
+6. Виконані проєкти.
+7. Етапи роботи.
+8. Відгуки.
+9. FAQ.
+10. Контактний блок.
+11. Footer.
+
+## Структура проєкту
+
+```text
+src/
+├── app/
+│   ├── about/
+│   ├── contacts/
+│   ├── projects/
+│   ├── services/
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+│
+├── components/
+│   ├── layout/
+│   ├── sections/
+│   └── ui/
+│
+├── data/
+├── styles/
+├── types/
+└── utils/
+
+public/
+├── icons/
+├── images/
+└── logo/
+```
+
+Структура може змінюватися в міру розвитку проєкту, але компоненти потрібно групувати за їхнім призначенням.
+
+## Адаптивність
+
+Сайт повинен коректно працювати на таких ширинах:
+
+* великі екрани;
+* ноутбуки;
+* планшети;
+* мобільні пристрої;
+* мінімальна підтримувана ширина — 320 px.
+
+Орієнтовні контрольні точки:
+
+```css
+1280px
+1024px
+768px
+480px
+320px
+```
+
+Компоненти повинні залишатися адаптивними також між цими контрольними точками.
+
+## SEO
+
+Для сайту необхідно передбачити:
+
+* унікальні метадані сторінок;
+* семантичну HTML-структуру;
+* один логічний `h1` на сторінці;
+* зрозумілу ієрархію заголовків;
+* `sitemap.ts`;
+* `robots.ts`;
+* Open Graph;
+* canonical URL;
+* оптимізовані зображення;
+* структуровані дані будівельної компанії;
+* зрозумілі URL сторінок;
+* українськомовний контент.
+
+## Дизайн
+
+Основні принципи:
+
+* сучасний мінімалістичний стиль;
+* відчуття надійності та професійності;
+* достатня кількість вільного простору;
+* зрозуміла візуальна ієрархія;
+* контрастні кнопки;
+* помірна кількість анімацій;
+* зручне мобільне меню;
+* реальні фотографії будівельних робіт.
+
+## Запуск проєкту
+
+Встановлення залежностей:
+
+```bash
+npm install
+```
+
+Запуск локального сервера:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Сайт буде доступний за адресою:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Перевірка ESLint:
 
-## Learn More
+```bash
+npm run lint
+```
 
-To learn more about Next.js, take a look at the following resources:
+Перевірка production-збірки:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Git
 
-## Deploy on Vercel
+Перед завершенням окремого етапу потрібно:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run lint
+npm run build
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Після успішної перевірки:
+
+```bash
+git add .
+git commit -m "Опис змін"
+git push
+```
