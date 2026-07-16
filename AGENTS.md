@@ -264,3 +264,9 @@ For a large task:
 6. Summarize changed files, decisions, and any remaining work.
 
 Do not generate the entire website in one uncontrolled pass unless explicitly asked to do so.
+
+Before implementing or modifying UI, read `docs/design-system.md`.
+
+Before writing or changing visible website content, read `docs/content-guide.md`.
+
+Treat these files as the source of truth for visual design and content style.
