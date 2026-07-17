@@ -1,0 +1,234 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  border-bottom: var(--border-default);
+  background: var(--color-background);
+}
+
+.inner {
+  display: flex;
+  min-height: var(--header-height-mobile);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.logo {
+  position: relative;
+  z-index: var(--z-header);
+}
+
+.menuButton {
+  position: relative;
+  z-index: var(--z-header);
+  display: inline-flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-default);
+  border-radius: var(--radius-small);
+  background: var(--color-white);
+  color: var(--color-text);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.menuIcon {
+  position: relative;
+  display: block;
+  width: 1.25rem;
+  height: 1rem;
+}
+
+.menuIcon span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transition:
+    top var(--transition-fast),
+    transform var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.menuIcon span:nth-child(1) {
+  top: 0;
+}
+
+.menuIcon span:nth-child(2) {
+  top: calc(50% - 1px);
+}
+
+.menuIcon span:nth-child(3) {
+  top: calc(100% - 2px);
+}
+
+.menuIconOpen span:nth-child(1),
+.menuIconOpen span:nth-child(3) {
+  top: calc(50% - 1px);
+}
+
+.menuIconOpen span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.menuIconOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuIconOpen span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.navigation {
+  position: fixed;
+  z-index: var(--z-menu);
+  top: var(--header-height-mobile);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  overflow-y: auto;
+  padding: var(--space-6) var(--container-padding-current) var(--space-8);
+  background: var(--color-background);
+}
+
+.navigationOpen {
+  display: block;
+}
+
+.navigationList {
+  display: flex;
+  width: min(100%, var(--content-narrow));
+  margin-inline: auto;
+  flex-direction: column;
+  list-style: none;
+}
+
+.navigationLink,
+.cta {
+  display: flex;
+  min-height: 3.25rem;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navigationLink {
+  position: relative;
+  border-bottom: var(--border-default);
+  color: var(--color-text);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.navigationLink[aria-current="page"]::after {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 2rem;
+  height: 2px;
+  background: var(--color-brand);
+  content: "";
+}
+
+.cta {
+  justify-content: center;
+  margin-top: var(--space-6);
+  padding-inline: var(--space-5);
+  border: 1px solid var(--color-brand);
+  border-radius: var(--radius-small);
+  background: var(--color-brand);
+  color: var(--color-text);
+  font-weight: 600;
+  transition:
+    transform var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+@media (min-width: 58rem) {
+  .inner {
+    display: grid;
+    min-height: var(--header-height-desktop);
+    grid-template-columns: auto 1fr;
+    gap: clamp(var(--space-6), 3vw, var(--space-12));
+  }
+
+  .menuButton {
+    display: none;
+  }
+
+  .navigation,
+  .navigationOpen {
+    position: static;
+    display: block;
+    width: auto;
+    overflow: visible;
+    padding: 0;
+    background: transparent;
+  }
+
+  .navigationList {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(var(--space-3), 1.5vw, var(--space-5));
+  }
+
+  .navigationLink {
+    min-height: 3rem;
+    border-bottom: 0;
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    transition: color var(--transition-fast);
+  }
+
+  .navigationLink[aria-current="page"]::after {
+    bottom: 0;
+    width: 100%;
+  }
+
+  .ctaItem {
+    margin-left: clamp(var(--space-2), 1vw, var(--space-4));
+  }
+
+  .cta {
+    min-height: 3rem;
+    margin-top: 0;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navigationLink:hover {
+    color: var(--color-brand-active);
+  }
+
+  .cta:hover {
+    border-color: var(--color-brand-hover);
+    background: var(--color-brand-hover);
+    transform: translateY(-1px);
+  }
+
+  .menuButton:hover {
+    border-color: var(--color-border-strong);
+    background: var(--color-surface);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menuIcon span,
+  .menuButton,
+  .navigationLink,
+  .cta {
+    transition: none;
+  }
+
+  .cta:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,14 @@
+.placeholder {
+  padding-block: clamp(var(--space-16), 10vw, var(--space-24));
+}
+
+.content {
+  display: grid;
+  max-width: 48rem;
+  gap: var(--space-5);
+}
+
+.content p {
+  color: var(--color-text-soft);
+  font-size: clamp(1rem, 2vw, 1.125rem);
+}

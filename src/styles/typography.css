@@ -1,0 +1,44 @@
+body {
+  color: var(--color-text);
+  font-family: var(--font-main), Arial, Helvetica, sans-serif;
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  line-height: var(--line-height-body);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: inherit;
+  font-weight: 700;
+  line-height: var(--line-height-heading);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+}
+
+p {
+  max-width: 70ch;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}

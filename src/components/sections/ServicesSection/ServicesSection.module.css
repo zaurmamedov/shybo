@@ -1,0 +1,128 @@
+.section {
+  padding-block: var(--space-16);
+  background: var(--color-surface);
+}
+
+.header {
+  margin-bottom: var(--space-10);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.card {
+  display: grid;
+  min-width: 0;
+  height: 100%;
+  grid-template-rows: auto auto 1fr auto;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: var(--border-default);
+  border-radius: var(--radius-medium);
+  background: var(--color-white);
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.card h3 {
+  font-size: var(--font-size-h4);
+  text-align: center;
+}
+
+.card svg {
+  justify-self: center;
+}
+
+.card p {
+  color: var(--color-text-soft);
+}
+
+.cardLink {
+  display: inline-flex;
+  width: 2.75rem;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
+  border: 1px solid transparent;
+  border-radius: var(--radius-small);
+  color: var(--color-text);
+  font-size: 1.5rem;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.action {
+  display: flex;
+  margin-top: var(--space-8);
+}
+
+.action a {
+  width: 100%;
+}
+
+@media (min-width: 40rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+
+  .action a {
+    width: auto;
+  }
+}
+
+@media (min-width: 64rem) {
+  .section {
+    padding-block: var(--space-24);
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+
+  .card {
+    min-height: 18rem;
+    padding: var(--space-8);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-small);
+    transform: translateY(-4px);
+  }
+
+  .cardLink:hover {
+    border-color: var(--color-border);
+    background: var(--color-brand-soft);
+    color: var(--color-brand-active);
+    transform: translateX(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .cardLink {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .cardLink:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,114 @@
+.button {
+  display: inline-flex;
+  min-width: max-content;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: var(--radius-small);
+  font-weight: 600;
+  line-height: var(--line-height-small);
+  text-align: center;
+  text-decoration: none;
+  transition:
+    transform var(--transition-fast),
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.button:link,
+.button:visited,
+.button:hover,
+.button:focus-visible,
+.button:active {
+  text-decoration: none;
+}
+
+.small {
+  min-height: 2.5rem;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-small);
+}
+
+.medium {
+  min-height: 3rem;
+  padding: var(--space-3) var(--space-5);
+  font-size: var(--font-size-body);
+}
+
+.large {
+  min-height: 3.5rem;
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--font-size-body);
+}
+
+.primary {
+  border-color: var(--color-brand);
+  background: var(--color-brand);
+  color: var(--color-text);
+}
+
+.secondary {
+  border-color: var(--color-border-strong);
+  background: var(--color-white);
+  color: var(--color-text);
+}
+
+.text {
+  min-width: 0;
+  border-color: transparent;
+  background: transparent;
+  color: var(--color-text);
+}
+
+.button:disabled {
+  opacity: 0.5;
+}
+
+.button:not(:disabled):active {
+  transform: translateY(0);
+}
+
+.primary:not(:disabled):active {
+  border-color: var(--color-brand-active);
+  background: var(--color-brand-active);
+}
+
+.secondary:not(:disabled):active {
+  border-color: var(--color-text-soft);
+  background: var(--color-surface-strong);
+}
+
+.text:not(:disabled):active {
+  color: var(--color-text-soft);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primary:not(:disabled):hover {
+    border-color: var(--color-brand-hover);
+    background: var(--color-brand-hover);
+    transform: translateY(-1px);
+  }
+
+  .secondary:not(:disabled):hover {
+    border-color: var(--color-text-soft);
+    background: var(--color-surface);
+    transform: translateY(-1px);
+  }
+
+  .text:not(:disabled):hover {
+    color: var(--color-brand-active);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+
+  .button:not(:disabled):hover,
+  .button:not(:disabled):active {
+    transform: none;
+  }
+}

@@ -1,0 +1,116 @@
+.section {
+  position: relative;
+  padding-block: var(--space-12) calc(var(--space-12) + 10rem);
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-dark-border);
+  background: var(--color-dark-soft);
+  color: var(--color-white);
+}
+
+.section::before,
+.section::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 12rem;
+  content: "";
+  pointer-events: none;
+}
+
+.section::before {
+  background-image: url("/images/cta/contact-cta.jpg");
+  background-position: center 52%;
+  background-size: cover;
+}
+
+.section::after {
+  background: linear-gradient(
+    180deg,
+    var(--color-dark-soft) 0%,
+    rgb(18 24 29 / 0.62) 42%,
+    rgb(18 24 29 / 0.28) 100%
+  );
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--space-6);
+}
+
+.content {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.content h2 {
+  font-size: var(--font-size-h3);
+}
+
+.content p {
+  color: var(--color-border-strong);
+}
+
+.button {
+  width: 100%;
+}
+
+@media (min-width: 48rem) {
+  .section {
+    padding-bottom: calc(var(--space-12) + 12rem);
+  }
+
+  .container {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-12);
+  }
+
+  .button {
+    width: auto;
+  }
+
+  .section::before,
+  .section::after {
+    height: 14rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .section {
+    min-height: 17rem;
+    padding-block: 0;
+  }
+
+  .section::before,
+  .section::after {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    width: 46%;
+    height: auto;
+  }
+
+  .section::before {
+    background-position: center 52%;
+  }
+
+  .section::after {
+    background: linear-gradient(
+      90deg,
+      var(--color-dark-soft) 0%,
+      rgb(18 24 29 / 0.7) 24%,
+      rgb(18 24 29 / 0.3) 62%,
+      rgb(18 24 29 / 0.18) 100%
+    );
+  }
+
+  .container {
+    min-height: 17rem;
+    grid-template-columns: minmax(0, 1fr) auto minmax(19rem, 26rem);
+    gap: clamp(var(--space-8), 4vw, var(--space-16));
+  }
+}
