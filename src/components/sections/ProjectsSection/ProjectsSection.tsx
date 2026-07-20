@@ -22,8 +22,8 @@ export function ProjectsSection() {
               <div className={styles.media}>
                 <Image
                   className={styles.image}
-                  src={project.imagePaths[0]}
-                  alt={`${project.title}: ${project.description.toLocaleLowerCase("uk")}`}
+                  src={project.images[0].src}
+                  alt={project.images[0].alt}
                   fill
                   sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 50vw, 33vw"
                 />

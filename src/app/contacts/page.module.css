@@ -1,0 +1,192 @@
+.contacts {
+  padding-block: var(--space-16) var(--space-12);
+}
+
+.sectionHeader {
+  display: grid;
+  max-width: var(--content-narrow);
+  gap: var(--space-3);
+  margin-bottom: var(--space-10);
+}
+
+.sectionHeader p {
+  color: var(--color-text-soft);
+  font-size: var(--font-size-body-large);
+}
+
+.contactGrid {
+  display: grid;
+  gap: var(--space-4);
+  font-style: normal;
+}
+
+.contactCard {
+  display: grid;
+  min-width: 0;
+  min-height: 12rem;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: var(--border-default);
+  border-radius: var(--radius-medium);
+  background: var(--color-white);
+  box-shadow: var(--shadow-small);
+  color: var(--color-text);
+  text-decoration: none;
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.icon {
+  display: inline-flex;
+  width: 3.5rem;
+  height: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-small);
+  background: var(--color-brand-soft);
+  color: var(--color-brand-active);
+}
+
+.icon svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.75;
+}
+
+.cardContent {
+  display: grid;
+  min-width: 0;
+  gap: var(--space-2);
+  align-self: center;
+}
+
+.cardTitle {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+}
+
+.cardValue {
+  overflow-wrap: anywhere;
+  font-size: var(--font-size-body-large);
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.arrow {
+  color: var(--color-text-muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.mapSection {
+  padding-block: var(--space-4) var(--space-16);
+}
+
+.mapHeader {
+  margin-bottom: var(--space-8);
+}
+
+.mapFrame {
+  min-height: 26.25rem;
+  overflow: hidden;
+  border: var(--border-default);
+  border-radius: var(--radius-medium);
+  background: var(--color-surface-strong);
+  box-shadow: var(--shadow-small);
+}
+
+.mapFrame iframe {
+  display: block;
+  width: 100%;
+  min-height: 26.25rem;
+  border: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contactCard:hover {
+    border-color: var(--color-brand);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-3px);
+  }
+
+  .contactCard:hover .arrow {
+    color: var(--color-brand-active);
+    transform: translateX(3px);
+  }
+}
+
+@media (min-width: 48rem) {
+  .contacts {
+    padding-block: var(--space-20) var(--space-16);
+  }
+
+  .contactGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+
+  .contactCard {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+  }
+
+  .icon {
+    grid-column: 1;
+  }
+
+  .arrow {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .cardContent {
+    grid-column: 1 / -1;
+    align-self: end;
+  }
+
+  .mapSection {
+    padding-block: 0 var(--space-20);
+  }
+}
+
+@media (min-width: 64rem) {
+  .contacts {
+    padding-block: var(--space-24) var(--space-20);
+  }
+
+  .contactGrid {
+    gap: var(--space-6);
+  }
+
+  .contactCard {
+    min-height: 14rem;
+    padding: var(--space-8);
+  }
+
+  .mapSection {
+    padding-bottom: var(--space-24);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contactCard,
+  .arrow {
+    transition: none;
+  }
+
+  .contactCard:hover,
+  .contactCard:hover .arrow {
+    transform: none;
+  }
+}
