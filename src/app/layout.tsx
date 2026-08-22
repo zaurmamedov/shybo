@@ -17,7 +17,8 @@ export const metadata: Metadata = {
     default: "SHYBO — будівельна компанія",
     template: "%s | SHYBO",
   },
-  description: "Офіційний сайт будівельної компанії SHYBO. Сайт перебуває в розробці.",
+  description:
+    "Офіційний сайт будівельної компанії ШИБО: будівельні, ремонтні та оздоблювальні роботи для житлових, комерційних і промислових об’єктів.",
 };
 
 export default function RootLayout({

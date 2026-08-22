@@ -3,6 +3,7 @@
   --color-brand: #f2b705;
   --color-brand-hover: #d89f00;
   --color-brand-active: #bd8b00;
+  --color-brand-text: #806000;
   --color-brand-soft: #fff7d6;
 
   /* Neutrals and surfaces */
@@ -27,7 +28,7 @@
   --color-success: #2f7d4a;
   --color-warning: #a96d00;
   --color-error: #b83a3a;
-  --color-focus: #1f5eff;
+  --color-focus: #0b3d91;
 
   /* Layout */
   --container-max: 82.5rem;

@@ -30,7 +30,7 @@ export function HeroSection() {
         <div className={styles.media}>
           <Image
             className={styles.image}
-            src="/images/hero/hero.jpg"
+            src="/images/hero/hero.webp"
             alt="Будівельні крани та каркас споруди на будівельному майданчику"
             fill
             sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1279px) 52vw, 680px"

@@ -18,8 +18,7 @@ const contentNavigation = [
   {
     href: "/services",
     title: "Послуги",
-    description:
-      "Перегляньте підтверджені напрями будівельних, ремонтних та оздоблювальних робіт компанії.",
+    description: "Перегляньте всі підтверджені напрями робіт компанії.",
     label: "Переглянути послуги",
   },
   {
@@ -46,7 +45,7 @@ export default function AboutPage() {
       <InternalPageHero
         title="Про компанію"
         description={company.heroDescription}
-        imageSrc="/images/hero/hero-about.jpg"
+        imageSrc="/images/hero/hero-about.webp"
         imageAlt="Будівельні спеціалісти обговорюють роботи на об’єкті"
         breadcrumbs={[
           { label: "Головна", href: "/" },
@@ -81,7 +80,7 @@ export default function AboutPage() {
           </div>
 
           <div className={styles.activityGrid}>
-            {services.map((service) => (
+            {services.slice(0, 4).map((service) => (
               <article className={styles.activityItem} key={service.id}>
                 <ServiceIcon name={service.icon} />
                 <div>

@@ -4,12 +4,11 @@ import { Container } from "@/components/layout/Container/Container";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection/FinalCtaSection";
 import { InternalPageHero } from "@/components/sections/InternalPageHero/InternalPageHero";
 import { ServiceIcon } from "@/components/ui/ServiceIcon/ServiceIcon";
-import { services } from "@/data/services";
+import { services, servicesOverview } from "@/data/services";
 
 import styles from "./page.module.css";
 
-const pageDescription =
-  "Послуги будівельної компанії ШИБО: будівництво житлових і нежитлових будівель, ремонт, оздоблення та будівництво доріг і автострад.";
+const pageDescription = `Послуги будівельної компанії ШИБО: ${servicesOverview}.`;
 
 export const metadata: Metadata = {
   title: { absolute: "Послуги | ШИБО" },
@@ -25,8 +24,8 @@ export default function ServicesPage() {
     <>
       <InternalPageHero
         title="Послуги"
-        description="Будівництво житлових і нежитлових будівель, ремонт, оздоблення та будівництво доріг і автострад."
-        imageSrc="/images/hero/hero-services.jpg"
+        description={servicesOverview}
+        imageSrc="/images/hero/hero-services.webp"
         imageAlt="Активні будівельні роботи на об’єкті"
         imagePosition="center 58%"
         breadcrumbs={[

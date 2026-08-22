@@ -1,12 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { Container } from "@/components/layout/Container/Container";
 import { ButtonLink } from "@/components/ui/Button/Button";
 import { projects } from "@/data/projects";
 
 import styles from "./ProjectsSection.module.css";
-
-const featuredProjects = projects.filter((project) => project.featured);
 
 export function ProjectsSection() {
   return (
@@ -17,22 +16,29 @@ export function ProjectsSection() {
         </div>
 
         <div className={styles.grid}>
-          {featuredProjects.map((project) => (
-            <article className={styles.card} key={project.id}>
-              <div className={styles.media}>
-                <Image
-                  className={styles.image}
-                  src={project.images[0].src}
-                  alt={project.images[0].alt}
-                  fill
-                  sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 50vw, 33vw"
-                />
-              </div>
-              <div className={styles.content}>
-                <p className={styles.category}>{project.category}</p>
-                <h3>{project.title}</h3>
-                <p className={styles.description}>{project.description}</p>
-              </div>
+          {projects.map((project) => (
+            <article className={styles.card} key={project.slug}>
+              <Link
+                className={styles.cardLink}
+                href={`/projects/${project.slug}`}
+                aria-label={`Переглянути ${project.title}: ${project.direction}`}
+              >
+                <div className={styles.media}>
+                  <Image
+                    className={styles.image}
+                    src={project.coverImage.src}
+                    alt={project.coverImage.alt}
+                    fill
+                    sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 50vw, 25vw"
+                    style={{ objectPosition: project.coverImage.objectPosition }}
+                  />
+                </div>
+                <div className={styles.content}>
+                  <p className={styles.category}>{project.direction}</p>
+                  <h3>{project.title}</h3>
+                  <p className={styles.description}>{project.description}</p>
+                </div>
+              </Link>
             </article>
           ))}
         </div>

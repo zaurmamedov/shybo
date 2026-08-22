@@ -762,29 +762,28 @@ Keep transitions restrained.
 
 ---
 
-# 15. Trusted companies section
+# 15. Organizations section
 
 ## 15.1 Heading
 
 Use one heading only:
 
 ```text
-Нам довіряють
+Виконували роботи для
 ```
 
 Do not add another heading with the same meaning.
 
-## 15.2 Logos
+## 15.2 Organization names
 
-- Use grayscale by default.
-- Keep all logos visually balanced.
-- Do not let one logo dominate.
+- Present confirmed organization names as neutral text items.
+- Keep typography and cards visually balanced.
+- Do not imply partnership, endorsement, or sponsorship.
 - Maintain generous horizontal spacing.
-- A color reveal on hover is optional.
 
-Only display real client or partner logos approved by the company.
+Only display organizations for which completed work is confirmed.
 
-Do not invent clients.
+Do not display logos without confirmed permission.
 
 ---
 

@@ -48,7 +48,7 @@
   justify-content: center;
   border-radius: var(--radius-small);
   background: var(--color-brand-soft);
-  color: var(--color-brand-active);
+  color: var(--color-brand-text);
 }
 
 .icon svg {
@@ -75,9 +75,16 @@
 
 .cardValue {
   overflow-wrap: anywhere;
+  color: inherit;
   font-size: var(--font-size-body-large);
   font-weight: 700;
   line-height: 1.45;
+  text-decoration: none;
+}
+
+.emailValue {
+  overflow-wrap: normal;
+  white-space: nowrap;
 }
 
 .arrow {
@@ -113,6 +120,27 @@
   border: 0;
 }
 
+@media (max-width: 22.5rem) {
+  .contactCard {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto 1fr;
+  }
+
+  .icon {
+    grid-column: 1;
+  }
+
+  .arrow {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .cardContent {
+    grid-column: 1 / -1;
+    align-self: end;
+  }
+}
+
 @media (hover: hover) and (pointer: fine) {
   .contactCard:hover {
     border-color: var(--color-brand);
@@ -121,7 +149,7 @@
   }
 
   .contactCard:hover .arrow {
-    color: var(--color-brand-active);
+    color: var(--color-brand-text);
     transform: translateX(3px);
   }
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { Logo } from "@/components/ui/Logo/Logo";
+import { companyContacts } from "@/data/company";
 import { services } from "@/data/services";
 
 import { Container } from "../Container/Container";
@@ -54,6 +55,8 @@ function FooterIcon({ name }: FooterIconProps) {
 }
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className={styles.footer}>
       <Container>
@@ -102,31 +105,38 @@ export function Footer() {
             </h2>
             <address>
               <ul className={styles.contactList}>
+                {companyContacts.phones.map((phone) => (
+                  <li key={phone.href}>
+                    <a
+                      className={styles.contactLink}
+                      href={phone.href}
+                      aria-label={phone.ariaLabel}
+                    >
+                      <FooterIcon name="phone" />
+                      <span>{phone.value}</span>
+                    </a>
+                  </li>
+                ))}
                 <li>
                   <a
                     className={styles.contactLink}
-                    href="tel:+380684659567"
-                    aria-label="Зателефонувати за номером 068 465 95 67"
+                    href={companyContacts.email.href}
+                    aria-label={companyContacts.email.ariaLabel}
                   >
-                    <FooterIcon name="phone" />
-                    <span>068 465 95 67</span>
-                  </a>
-                </li>
-                <li>
-                  <a className={styles.contactLink} href="mailto:shibokr@ukr.net">
                     <FooterIcon name="email" />
-                    <span>shibokr@ukr.net</span>
+                    <span>{companyContacts.email.value}</span>
                   </a>
                 </li>
                 <li>
                   <a
                     className={styles.contactLink}
-                    href="https://www.google.com/maps/search/?api=1&query=50065%20%D0%BC.%20%D0%9A%D1%80%D0%B8%D0%B2%D0%B8%D0%B9%20%D0%A0%D1%96%D0%B3%20%D0%B2%D1%83%D0%BB.%20%D0%A1%D0%BE%D0%B1%D0%BE%D1%80%D0%BD%D0%BE%D1%81%D1%82%D1%96%2066%D0%B0"
+                    href={companyContacts.address.href}
+                    aria-label={companyContacts.address.ariaLabel}
                     target="_blank"
                     rel="noreferrer"
                   >
                     <FooterIcon name="location" />
-                    <span>50065, м. Кривий Ріг, вул. Соборності, 66а</span>
+                    <span>{companyContacts.address.value}</span>
                   </a>
                 </li>
               </ul>
@@ -135,7 +145,10 @@ export function Footer() {
         </div>
 
         <div className={styles.bottom}>
-          <p>© 2026 ШИБО. Усі права захищені.</p>
+          <p>© {currentYear} ШИБО. Усі права захищені.</p>
+          <Link className={styles.bottomLink} href="/privacy">
+            Політика конфіденційності
+          </Link>
         </div>
       </Container>
     </footer>

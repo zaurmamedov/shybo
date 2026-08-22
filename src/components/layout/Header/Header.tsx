@@ -19,7 +19,9 @@ const navigation = [
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const navigationRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -27,11 +29,37 @@ export function Header() {
 
     const previousBodyOverflow = document.body.style.overflow;
     const previousHtmlOverflow = document.documentElement.style.overflow;
+    const focusableSelector =
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    navigationRef.current
+      ?.querySelector<HTMLElement>(focusableSelector)
+      ?.focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsMenuOpen(false);
         menuButtonRef.current?.focus();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusableElements = Array.from(
+        headerRef.current?.querySelectorAll<HTMLElement>(focusableSelector) ?? [],
+      ).filter((element) => element.getClientRects().length > 0);
+
+      if (focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
       }
     };
 
@@ -61,9 +89,9 @@ export function Header() {
     href === "/" ? pathname === href : pathname.startsWith(href);
 
   return (
-    <header className={styles.header}>
+    <header className={styles.header} ref={headerRef}>
       <Container className={styles.inner}>
-        <Logo className={styles.logo} onClick={closeMenu} preload showName />
+        <Logo className={styles.logo} onClick={closeMenu} showName />
 
         <button
           ref={menuButtonRef}
@@ -85,6 +113,7 @@ export function Header() {
         </button>
 
         <nav
+          ref={navigationRef}
           className={`${styles.navigation} ${isMenuOpen ? styles.navigationOpen : ""}`}
           id="primary-navigation"
           aria-label="Основна навігація"

@@ -19,7 +19,7 @@
 }
 
 .section::before {
-  background-image: url("/images/cta/contact-cta.jpg");
+  background-image: url("/images/cta/contact-cta.webp");
   background-position: center 52%;
   background-size: cover;
 }

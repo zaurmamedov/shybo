@@ -7,7 +7,7 @@ import { ServicesSection } from "@/components/sections/ServicesSection/ServicesS
 import { TrustedCompaniesSection } from "@/components/sections/TrustedCompaniesSection/TrustedCompaniesSection";
 
 export const metadata: Metadata = {
-  title: "Будівельна компанія",
+  title: { absolute: "Будівельна компанія | ШИБО" },
   description:
     "SHYBO виконує будівельні, ремонтні та оздоблювальні роботи для житлових, комерційних і промислових об’єктів.",
 };

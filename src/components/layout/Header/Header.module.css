@@ -205,7 +205,7 @@
 
 @media (hover: hover) and (pointer: fine) {
   .navigationLink:hover {
-    color: var(--color-brand-active);
+    color: var(--color-brand-text);
   }
 
   .cta:hover {

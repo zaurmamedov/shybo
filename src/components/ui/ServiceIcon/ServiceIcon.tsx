@@ -40,10 +40,25 @@ export function ServiceIcon({ name }: ServiceIconProps) {
     );
   }
 
+  if (name === "roof") {
+    return (
+      <svg className={styles.icon} {...commonProps}>
+        <path d="m5 25 19-16 19 16M10 22v20h28V22M16 30h16M15 36h18" />
+      </svg>
+    );
+  }
+
+  if (name === "plumbing") {
+    return (
+      <svg className={styles.icon} {...commonProps}>
+        <path d="M9 7v13a5 5 0 0 0 5 5h20a5 5 0 0 1 5 5v11M4 7h10M34 41h10M20 19v12M15 19h10M15 31h10" />
+      </svg>
+    );
+  }
+
   return (
     <svg className={styles.icon} {...commonProps}>
-      <path d="M8 42 17 7h14l9 35M15 31h18M12 42h24" />
-      <path d="M24 9v7m0 7v7m0 7v5" strokeDasharray="4 4" />
+      <path d="M12 15h24l-2 27H14l-2-27ZM9 15h30M18 15V9h12v6M20 22v13M28 22v13" />
     </svg>
   );
 }

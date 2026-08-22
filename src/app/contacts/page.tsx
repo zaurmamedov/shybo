@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 
 import { Container } from "@/components/layout/Container/Container";
 import { InternalPageHero } from "@/components/sections/InternalPageHero/InternalPageHero";
+import { companyContacts } from "@/data/company";
 
 import styles from "./page.module.css";
 
 const pageDescription =
-  "Контактна інформація будівельної компанії ШИБО. Телефон, електронна пошта, адреса та розташування на карті.";
+  "Контактна інформація будівельної компанії ШИБО. Телефони, електронна пошта, адреса та розташування на карті.";
 
 type ContactIconName = "phone" | "email" | "location";
 
@@ -21,26 +22,19 @@ type ContactItem = {
 
 const contactItems: readonly ContactItem[] = [
   {
-    title: "Телефон",
-    value: "068 465 95 67",
-    href: "tel:+380684659567",
-    icon: "phone",
-    ariaLabel: "Зателефонувати за номером 068 465 95 67",
-  },
-  {
     title: "Електронна пошта",
-    value: "shibokr@ukr.net",
-    href: "mailto:shibokr@ukr.net",
+    value: companyContacts.email.value,
+    href: companyContacts.email.href,
     icon: "email",
-    ariaLabel: "Написати на електронну пошту shibokr@ukr.net",
+    ariaLabel: companyContacts.email.ariaLabel,
   },
   {
     title: "Адреса",
-    value: "50065, м. Кривий Ріг, вул. Соборності, 66а",
-    href: "https://www.google.com/maps/search/?api=1&query=50065%20%D0%BC.%20%D0%9A%D1%80%D0%B8%D0%B2%D0%B8%D0%B9%20%D0%A0%D1%96%D0%B3%20%D0%B2%D1%83%D0%BB.%20%D0%A1%D0%BE%D0%B1%D0%BE%D1%80%D0%BD%D0%BE%D1%81%D1%82%D1%96%2066%D0%B0",
+    value: companyContacts.address.value,
+    href: companyContacts.address.href,
     icon: "location",
     external: true,
-    ariaLabel: "Відкрити адресу компанії ШИБО в Google Maps",
+    ariaLabel: companyContacts.address.ariaLabel,
   },
 ];
 
@@ -95,7 +89,7 @@ export default function ContactsPage() {
       <InternalPageHero
         title="Контакти"
         description="Зв’яжіться з ШИБО, щоб обговорити об’єкт, необхідні роботи та вимоги до результату."
-        imageSrc="/images/hero/hero-contacts.jpg"
+        imageSrc="/images/hero/hero-contacts.webp"
         imageAlt="Фахівці працюють разом за столом"
         breadcrumbs={[
           { label: "Головна", href: "/" },
@@ -111,6 +105,24 @@ export default function ContactsPage() {
           </div>
 
           <address className={styles.contactGrid}>
+            <div className={styles.contactCard}>
+              <span className={styles.icon}>
+                <ContactIcon name="phone" />
+              </span>
+              <span className={styles.cardContent}>
+                <span className={styles.cardTitle}>Телефони</span>
+                {companyContacts.phones.map((phone) => (
+                  <a
+                    className={styles.cardValue}
+                    href={phone.href}
+                    aria-label={phone.ariaLabel}
+                    key={phone.href}
+                  >
+                    {phone.value}
+                  </a>
+                ))}
+              </span>
+            </div>
             {contactItems.map((item) => (
               <a
                 className={styles.contactCard}
@@ -125,7 +137,11 @@ export default function ContactsPage() {
                 </span>
                 <span className={styles.cardContent}>
                   <span className={styles.cardTitle}>{item.title}</span>
-                  <span className={styles.cardValue}>{item.value}</span>
+                  <span
+                    className={`${styles.cardValue} ${item.icon === "email" ? styles.emailValue : ""}`}
+                  >
+                    {item.value}
+                  </span>
                 </span>
                 <span className={styles.arrow} aria-hidden="true">
                   {item.external ? "↗" : "→"}

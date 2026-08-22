@@ -235,7 +235,7 @@ Preferred:
 ```text
 Наші послуги
 Реалізовані проєкти
-Нам довіряють
+Виконували роботи для
 Про компанію
 Зв’яжіться з нами
 ```
@@ -245,14 +245,14 @@ Avoid duplicate heading pairs with the same meaning.
 Not recommended:
 
 ```text
-НАМ ДОВІРЯЮТЬ
-Ми працюємо для найкращих
+НАШІ КЛІЄНТИ
+Нам рекомендують
 ```
 
 Use only:
 
 ```text
-Нам довіряють
+Виконували роботи для
 ```
 
 ## 6.3 Heading length
@@ -444,17 +444,18 @@ Project card fields:
 
 Do not invent addresses or client names.
 
-## 9.4 Trusted companies
+## 9.4 Organizations
 
 Heading:
 
 ```text
-Нам довіряють
+Виконували роботи для
 ```
 
 Do not add another statement with the same meaning.
 
-Only show approved company logos.
+Use confirmed organization names in a neutral text presentation. Do not imply
+partnership, endorsement, recommendation, sponsorship, or official affiliation.
 
 ## 9.5 Final CTA
 

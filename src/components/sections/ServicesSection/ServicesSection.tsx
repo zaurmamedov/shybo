@@ -16,7 +16,7 @@ export function ServicesSection() {
         </div>
 
         <div className={styles.grid}>
-          {services.map((service) => (
+          {services.slice(0, 4).map((service) => (
             <article className={styles.card} key={service.id}>
               <ServiceIcon name={service.icon} />
               <h3>{service.title}</h3>

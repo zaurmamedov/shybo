@@ -1,0 +1,37 @@
+.section {
+  display: grid;
+  min-height: clamp(30rem, 65vh, 42rem);
+  place-items: center;
+  padding-block: var(--space-16);
+  background: var(--color-surface);
+}
+
+.container {
+  display: grid;
+  max-width: var(--content-narrow);
+  justify-items: start;
+  gap: var(--space-5);
+}
+
+.code {
+  color: var(--color-brand-text);
+  font-size: var(--font-size-small);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.container h1 {
+  font-size: var(--font-size-h1);
+}
+
+.description {
+  max-width: 48ch;
+  color: var(--color-text-soft);
+  font-size: var(--font-size-body-large);
+}
+
+@media (min-width: 64rem) {
+  .section {
+    padding-block: var(--space-24);
+  }
+}

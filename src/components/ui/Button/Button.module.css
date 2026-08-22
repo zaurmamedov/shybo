@@ -98,7 +98,7 @@
   }
 
   .text:not(:disabled):hover {
-    color: var(--color-brand-active);
+    color: var(--color-brand-text);
   }
 }
 
