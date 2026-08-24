@@ -32,6 +32,7 @@
 }
 
 .breadcrumbs a {
+  color: var(--color-text-soft);
   text-decoration: none;
   transition: color var(--transition-fast);
 }

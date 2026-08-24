@@ -28,7 +28,7 @@ export function InternalPageHero({
   imagePosition = "center center",
 }: InternalPageHeroProps) {
   return (
-    <section className={styles.hero} aria-labelledby="internal-page-title">
+    <section className={styles.hero}>
       {imageSrc ? (
         <Image
           className={styles.image}
@@ -65,7 +65,7 @@ export function InternalPageHero({
             </ol>
           </nav>
 
-          <h1 id="internal-page-title">{title}</h1>
+          <h1>{title}</h1>
           <p>{description}</p>
         </div>
       </Container>
