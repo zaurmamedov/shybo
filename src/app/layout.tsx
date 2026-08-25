@@ -3,6 +3,12 @@ import { Manrope } from "next/font/google";
 
 import { Footer } from "@/components/layout/Footer/Footer";
 import { Header } from "@/components/layout/Header/Header";
+import {
+  createOpenGraphMetadata,
+  siteDescription,
+  siteTitle,
+  siteUrl,
+} from "@/data/seo";
 
 import "./globals.css";
 
@@ -13,12 +19,17 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "SHYBO — будівельна компанія",
+    default: siteTitle,
     template: "%s | SHYBO",
   },
-  description:
-    "Офіційний сайт будівельної компанії ШИБО: будівельні, ремонтні та оздоблювальні роботи для житлових, комерційних і промислових об’єктів.",
+  description: siteDescription,
+  openGraph: createOpenGraphMetadata({
+    title: siteTitle,
+    description: siteDescription,
+    path: "/",
+  }),
 };
 
 export default function RootLayout({

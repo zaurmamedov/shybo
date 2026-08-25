@@ -7,12 +7,14 @@ import { InternalPageHero } from "@/components/sections/InternalPageHero/Interna
 import { ButtonLink } from "@/components/ui/Button/Button";
 import { ServiceIcon } from "@/components/ui/ServiceIcon/ServiceIcon";
 import { company, companyPrinciples, companyWorkSteps } from "@/data/company";
+import { createOpenGraphMetadata } from "@/data/seo";
 import { services } from "@/data/services";
 
 import styles from "./page.module.css";
 
 const pageDescription =
   "ШИБО виконує будівельні, ремонтні та оздоблювальні роботи для житлових, комерційних і промислових об’єктів із чіткою організацією процесу.";
+const pageTitle = "Про компанію | ШИБО";
 
 const contentNavigation = [
   {
@@ -31,12 +33,14 @@ const contentNavigation = [
 ] as const;
 
 export const metadata: Metadata = {
-  title: { absolute: "Про компанію | ШИБО" },
+  title: { absolute: pageTitle },
   description: pageDescription,
-  openGraph: {
-    title: "Про компанію | ШИБО",
+  alternates: { canonical: "/about" },
+  openGraph: createOpenGraphMetadata({
+    title: pageTitle,
     description: pageDescription,
-  },
+    path: "/about",
+  }),
 };
 
 export default function AboutPage() {

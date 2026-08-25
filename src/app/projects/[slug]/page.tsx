@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container/Container";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection/FinalCtaSection";
 import { getProjectBySlug, projects } from "@/data/projects";
+import { createOpenGraphMetadata } from "@/data/seo";
 
 import styles from "./page.module.css";
 
@@ -30,9 +31,11 @@ export async function generateMetadata({
   return {
     title: { absolute: title },
     description: project.description,
-    openGraph: {
+    alternates: { canonical: `/projects/${project.slug}` },
+    openGraph: createOpenGraphMetadata({
       title,
       description: project.description,
+      path: `/projects/${project.slug}`,
       images: [
         {
           url: project.coverImage.src,
@@ -41,7 +44,7 @@ export async function generateMetadata({
           alt: project.coverImage.alt,
         },
       ],
-    },
+    }),
   };
 }
 

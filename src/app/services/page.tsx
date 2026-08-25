@@ -4,19 +4,23 @@ import { Container } from "@/components/layout/Container/Container";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection/FinalCtaSection";
 import { InternalPageHero } from "@/components/sections/InternalPageHero/InternalPageHero";
 import { ServiceIcon } from "@/components/ui/ServiceIcon/ServiceIcon";
+import { createOpenGraphMetadata } from "@/data/seo";
 import { services, servicesOverview } from "@/data/services";
 
 import styles from "./page.module.css";
 
 const pageDescription = `Послуги будівельної компанії ШИБО: ${servicesOverview}.`;
+const pageTitle = "Послуги | ШИБО";
 
 export const metadata: Metadata = {
-  title: { absolute: "Послуги | ШИБО" },
+  title: { absolute: pageTitle },
   description: pageDescription,
-  openGraph: {
-    title: "Послуги | ШИБО",
+  alternates: { canonical: "/services" },
+  openGraph: createOpenGraphMetadata({
+    title: pageTitle,
     description: pageDescription,
-  },
+    path: "/services",
+  }),
 };
 
 export default function ServicesPage() {

@@ -3,11 +3,13 @@ import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container/Container";
 import { InternalPageHero } from "@/components/sections/InternalPageHero/InternalPageHero";
 import { companyContacts } from "@/data/company";
+import { createOpenGraphMetadata } from "@/data/seo";
 
 import styles from "./page.module.css";
 
 const pageDescription =
   "Контактна інформація будівельної компанії ШИБО. Телефони, електронна пошта, адреса та розташування на карті.";
+const pageTitle = "Контакти | ШИБО";
 
 type ContactIconName = "phone" | "email" | "location";
 
@@ -42,12 +44,14 @@ const mapEmbedUrl =
   "https://www.google.com/maps?q=50065%2C%20%D0%BC.%20%D0%9A%D1%80%D0%B8%D0%B2%D0%B8%D0%B9%20%D0%A0%D1%96%D0%B3%2C%20%D0%B2%D1%83%D0%BB.%20%D0%A1%D0%BE%D0%B1%D0%BE%D1%80%D0%BD%D0%BE%D1%81%D1%82%D1%96%2C%2066%D0%B0&output=embed";
 
 export const metadata: Metadata = {
-  title: { absolute: "Контакти | ШИБО" },
+  title: { absolute: pageTitle },
   description: pageDescription,
-  openGraph: {
-    title: "Контакти | ШИБО",
+  alternates: { canonical: "/contacts" },
+  openGraph: createOpenGraphMetadata({
+    title: pageTitle,
     description: pageDescription,
-  },
+    path: "/contacts",
+  }),
 };
 
 function ContactIcon({ name }: { name: ContactIconName }) {

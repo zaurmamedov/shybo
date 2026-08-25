@@ -5,20 +5,24 @@ import Link from "next/link";
 import { Container } from "@/components/layout/Container/Container";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection/FinalCtaSection";
 import { InternalPageHero } from "@/components/sections/InternalPageHero/InternalPageHero";
+import { createOpenGraphMetadata } from "@/data/seo";
 import { projects } from "@/data/projects";
 
 import styles from "./page.module.css";
 
 const pageDescription =
   "Проєкти ШИБО: внутрішня перегородка, металеві огорожі, облаштування приміщення та вхідна група.";
+const pageTitle = "Проєкти | ШИБО";
 
 export const metadata: Metadata = {
-  title: { absolute: "Проєкти | ШИБО" },
+  title: { absolute: pageTitle },
   description: pageDescription,
-  openGraph: {
-    title: "Проєкти | ШИБО",
+  alternates: { canonical: "/projects" },
+  openGraph: createOpenGraphMetadata({
+    title: pageTitle,
     description: pageDescription,
-  },
+    path: "/projects",
+  }),
 };
 
 export default function ProjectsPage() {

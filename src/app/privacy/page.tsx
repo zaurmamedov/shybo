@@ -3,15 +3,23 @@ import Link from "next/link";
 
 import { Container } from "@/components/layout/Container/Container";
 import { companyContacts } from "@/data/company";
+import { createOpenGraphMetadata } from "@/data/seo";
 
 import styles from "./page.module.css";
 
 const pageDescription =
   "Політика конфіденційності сайту ШИБО та інформація про використання сторонніх сервісів.";
+const pageTitle = "Політика конфіденційності | ШИБО";
 
 export const metadata: Metadata = {
-  title: { absolute: "Політика конфіденційності | ШИБО" },
+  title: { absolute: pageTitle },
   description: pageDescription,
+  alternates: { canonical: "/privacy" },
+  openGraph: createOpenGraphMetadata({
+    title: pageTitle,
+    description: pageDescription,
+    path: "/privacy",
+  }),
 };
 
 export default function PrivacyPage() {
