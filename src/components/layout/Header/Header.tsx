@@ -27,8 +27,16 @@ export function Header() {
   useEffect(() => {
     if (!isMenuOpen) return;
 
+    const scrollPosition = window.scrollY;
     const previousBodyOverflow = document.body.style.overflow;
+    const previousBodyPosition = document.body.style.position;
+    const previousBodyTop = document.body.style.top;
+    const previousBodyRight = document.body.style.right;
+    const previousBodyLeft = document.body.style.left;
+    const previousBodyWidth = document.body.style.width;
     const previousHtmlOverflow = document.documentElement.style.overflow;
+    const previousHtmlScrollBehavior =
+      document.documentElement.style.scrollBehavior;
     const focusableSelector =
       'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
@@ -63,13 +71,26 @@ export function Header() {
       }
     };
 
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.right = "0";
+    document.body.style.left = "0";
+    document.body.style.width = "100%";
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
     document.addEventListener("keydown", handleKeyDown);
 
     return () => {
       document.body.style.overflow = previousBodyOverflow;
+      document.body.style.position = previousBodyPosition;
+      document.body.style.top = previousBodyTop;
+      document.body.style.right = previousBodyRight;
+      document.body.style.left = previousBodyLeft;
+      document.body.style.width = previousBodyWidth;
       document.documentElement.style.overflow = previousHtmlOverflow;
+      document.documentElement.style.scrollBehavior = "auto";
+      window.scrollTo(0, scrollPosition);
+      document.documentElement.style.scrollBehavior = previousHtmlScrollBehavior;
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [isMenuOpen]);
@@ -89,7 +110,10 @@ export function Header() {
     href === "/" ? pathname === href : pathname.startsWith(href);
 
   return (
-    <header className={styles.header} ref={headerRef}>
+    <header
+      className={`${styles.header} ${isMenuOpen ? styles.headerOpen : ""}`}
+      ref={headerRef}
+    >
       <Container className={styles.inner}>
         <Logo className={styles.logo} onClick={closeMenu} showName />
 
