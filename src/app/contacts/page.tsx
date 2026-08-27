@@ -8,8 +8,8 @@ import { createOpenGraphMetadata } from "@/data/seo";
 import styles from "./page.module.css";
 
 const pageDescription =
-  "Контактна інформація будівельної компанії ШИБО. Телефони, електронна пошта, адреса та розташування на карті.";
-const pageTitle = "Контакти | ШИБО";
+  "Контакти будівельної компанії ШИБО (SHYBO) у Кривому Розі: телефони, електронна пошта, адреса та розташування на карті.";
+const pageTitle = "Контакти | ШИБО (SHYBO)";
 
 type ContactIconName = "phone" | "email" | "location";
 

@@ -11,8 +11,8 @@ import { projects } from "@/data/projects";
 import styles from "./page.module.css";
 
 const pageDescription =
-  "Проєкти ШИБО: внутрішня перегородка, металеві огорожі, облаштування приміщення та вхідна група.";
-const pageTitle = "Проєкти | ШИБО";
+  "Проєкти будівельної компанії ШИБО (SHYBO): внутрішня перегородка, металеві огорожі, облаштування приміщення та вхідна група.";
+const pageTitle = "Проєкти | ШИБО (SHYBO)";
 
 export const metadata: Metadata = {
   title: { absolute: pageTitle },

@@ -13,8 +13,8 @@ import { services } from "@/data/services";
 import styles from "./page.module.css";
 
 const pageDescription =
-  "ШИБО виконує будівельні, ремонтні та оздоблювальні роботи для житлових, комерційних і промислових об’єктів із чіткою організацією процесу.";
-const pageTitle = "Про компанію | ШИБО";
+  "Про будівельну компанію ШИБО (SHYBO) у Кривому Розі: напрями роботи, принципи, організація процесів і співпраця із замовниками.";
+const pageTitle = "Про компанію | ШИБО (SHYBO)";
 
 const contentNavigation = [
   {

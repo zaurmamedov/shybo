@@ -5,19 +5,20 @@ import { HeroSection } from "@/components/sections/HeroSection/HeroSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection/ProjectsSection";
 import { ServicesSection } from "@/components/sections/ServicesSection/ServicesSection";
 import { TrustedCompaniesSection } from "@/components/sections/TrustedCompaniesSection/TrustedCompaniesSection";
-import { createOpenGraphMetadata, siteUrl } from "@/data/seo";
-
-const pageTitle = "Будівельна компанія | ШИБО";
-const pageDescription =
-  "SHYBO виконує будівельні, ремонтні та оздоблювальні роботи для житлових, комерційних і промислових об’єктів.";
+import {
+  createOpenGraphMetadata,
+  siteDescription,
+  siteTitle,
+  siteUrl,
+} from "@/data/seo";
 
 export const metadata: Metadata = {
-  title: { absolute: pageTitle },
-  description: pageDescription,
+  title: { absolute: siteTitle },
+  description: siteDescription,
   alternates: { canonical: `${siteUrl}/` },
   openGraph: createOpenGraphMetadata({
-    title: pageTitle,
-    description: pageDescription,
+    title: siteTitle,
+    description: siteDescription,
     path: "/",
   }),
 };

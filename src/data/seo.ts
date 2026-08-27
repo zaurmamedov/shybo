@@ -1,9 +1,9 @@
 export const siteUrl = "https://shybo.com.ua";
 export const siteName = "ШИБО";
 
-export const siteTitle = "SHYBO — будівельна компанія";
+export const siteTitle = "Будівельна компанія ШИБО (SHYBO) | Кривий Ріг";
 export const siteDescription =
-  "Офіційний сайт будівельної компанії ШИБО: будівельні, ремонтні та оздоблювальні роботи для житлових, комерційних і промислових об’єктів.";
+  "Будівельна компанія ШИБО (SHYBO) у Кривому Розі. Будівництво, ремонт, оздоблювальні роботи, ремонт покрівлі та інші підтверджені послуги компанії.";
 
 type OpenGraphImage = {
   url: string;

@@ -9,8 +9,9 @@ import { services, servicesOverview } from "@/data/services";
 
 import styles from "./page.module.css";
 
-const pageDescription = `Послуги будівельної компанії ШИБО: ${servicesOverview}.`;
-const pageTitle = "Послуги | ШИБО";
+const pageDescription =
+  "Послуги будівельної компанії ШИБО (SHYBO) у Кривому Розі: будівництво, ремонт, оздоблення, ремонт покрівлі, сантехнічні роботи та збирання безпечних відходів.";
+const pageTitle = "Послуги | ШИБО (SHYBO)";
 
 export const metadata: Metadata = {
   title: { absolute: pageTitle },
