@@ -26,14 +26,15 @@ export async function generateMetadata({
     return {};
   }
 
-  const title = `${project.title} | ШИБО`;
+  const title = `${project.title} — ${project.direction} | ШИБО`;
+  const openGraphTitle = `${project.title} | ШИБО`;
 
   return {
     title: { absolute: title },
     description: project.description,
     alternates: { canonical: `/projects/${project.slug}` },
     openGraph: createOpenGraphMetadata({
-      title,
+      title: openGraphTitle,
       description: project.description,
       path: `/projects/${project.slug}`,
       images: [
