@@ -17,18 +17,16 @@ export function ServicesSection() {
 
         <div className={styles.grid}>
           {services.slice(0, 4).map((service) => (
-            <article className={styles.card} key={service.id}>
+            <Link
+              className={styles.card}
+              href={`/services/${service.slug}`}
+              key={service.slug}
+            >
               <ServiceIcon name={service.icon} />
               <h3>{service.title}</h3>
               <p>{service.description}</p>
-              <Link
-                className={styles.cardLink}
-                href="/services"
-                aria-label={`Переглянути послуги: ${service.title}`}
-              >
-                <span aria-hidden="true">→</span>
-              </Link>
-            </article>
+              <span className={styles.cardLink} aria-hidden="true">→</span>
+            </Link>
           ))}
         </div>
 

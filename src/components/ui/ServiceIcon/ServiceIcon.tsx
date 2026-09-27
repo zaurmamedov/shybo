@@ -1,9 +1,9 @@
-import type { Service } from "@/data/services";
+import type { ServiceIconName } from "@/data/services";
 
 import styles from "./ServiceIcon.module.css";
 
 type ServiceIconProps = {
-  name: Service["icon"];
+  name: ServiceIconName;
 };
 
 const commonProps = {
@@ -48,10 +48,50 @@ export function ServiceIcon({ name }: ServiceIconProps) {
     );
   }
 
+  if (name === "facade") {
+    return (
+      <svg className={styles.icon} {...commonProps}>
+        <path d="M8 42h32M11 42V10h26v32M17 16h5v6h-5v-6Zm9 0h5v6h-5v-6Zm-9 12h5v6h-5v-6Zm9 0h5v6h-5v-6Z" />
+      </svg>
+    );
+  }
+
   if (name === "plumbing") {
     return (
       <svg className={styles.icon} {...commonProps}>
         <path d="M9 7v13a5 5 0 0 0 5 5h20a5 5 0 0 1 5 5v11M4 7h10M34 41h10M20 19v12M15 19h10M15 31h10" />
+      </svg>
+    );
+  }
+
+  if (name === "electrical") {
+    return (
+      <svg className={styles.icon} {...commonProps}>
+        <path d="M27 5 13 27h10l-2 16 14-23H25l2-15Z" />
+      </svg>
+    );
+  }
+
+  if (name === "concrete") {
+    return (
+      <svg className={styles.icon} {...commonProps}>
+        <path d="M7 38h34M10 28h28v10H10V28Zm4-9h20v9H14v-9Zm5-9h10v9H19v-9Z" />
+      </svg>
+    );
+  }
+
+  if (name === "demolition") {
+    return (
+      <svg className={styles.icon} {...commonProps}>
+        <path d="m8 40 22-22m-5-9 14 14M22 12l5-5 14 14-5 5L22 12ZM9 34l5 5M7 42l7-3-5-5-2 8Z" />
+      </svg>
+    );
+  }
+
+  if (name === "metalwork") {
+    return (
+      <svg className={styles.icon} {...commonProps}>
+        <path d="M10 39h28M14 39V14h20v25M14 20h20M20 14v25m8-25v25M9 9l4 4m0-6-2 5m6-2-5 2" />
       </svg>
     );
   }

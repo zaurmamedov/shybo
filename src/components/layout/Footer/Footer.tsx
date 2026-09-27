@@ -89,9 +89,12 @@ export function Footer() {
               Послуги
             </h2>
             <ul className={styles.list}>
-              {services.map((service) => (
-                <li key={service.id}>
-                  <Link className={styles.link} href="/services">
+              {services.slice(0, 6).map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    className={styles.link}
+                    href={`/services/${service.slug}`}
+                  >
                     {service.title}
                   </Link>
                 </li>

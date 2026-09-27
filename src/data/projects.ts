@@ -13,6 +13,7 @@ export type Project = {
   description: string;
   coverImage: ProjectImage;
   galleryImages: readonly ProjectImage[];
+  relatedServiceSlugs: readonly string[];
 };
 
 export const projects: readonly Project[] = [
@@ -78,6 +79,7 @@ export const projects: readonly Project[] = [
         height: 1350,
       },
     ],
+    relatedServiceSlugs: ["construction", "finishing"],
   },
   {
     slug: "project-2",
@@ -111,6 +113,7 @@ export const projects: readonly Project[] = [
         height: 1600,
       },
     ],
+    relatedServiceSlugs: ["metalwork"],
   },
   {
     slug: "project-3",
@@ -175,6 +178,7 @@ export const projects: readonly Project[] = [
         height: 1600,
       },
     ],
+    relatedServiceSlugs: ["repair", "finishing"],
   },
   {
     slug: "project-4",
@@ -232,6 +236,7 @@ export const projects: readonly Project[] = [
         height: 778,
       },
     ],
+    relatedServiceSlugs: ["metalwork", "construction"],
   },
 ];
 

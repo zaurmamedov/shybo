@@ -22,6 +22,9 @@
   border: var(--border-default);
   border-radius: var(--radius-medium);
   background: var(--color-white);
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
   transition:
     transform var(--transition-base),
     border-color var(--transition-base),
@@ -59,6 +62,18 @@
     background-color var(--transition-fast),
     border-color var(--transition-fast),
     transform var(--transition-fast);
+}
+
+.card:focus-visible {
+  border-color: var(--color-brand);
+  outline-offset: -4px;
+}
+
+.card:focus-visible .cardLink {
+  border-color: var(--color-border);
+  background: var(--color-brand-soft);
+  color: var(--color-brand-text);
+  transform: translateX(2px);
 }
 
 .action {
@@ -99,12 +114,12 @@
 
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
-    border-color: var(--color-border-strong);
+    border-color: var(--color-brand);
     box-shadow: var(--shadow-small);
     transform: translateY(-4px);
   }
 
-  .cardLink:hover {
+  .card:hover .cardLink {
     border-color: var(--color-border);
     background: var(--color-brand-soft);
     color: var(--color-brand-text);
@@ -122,7 +137,8 @@
     transform: none;
   }
 
-  .cardLink:hover {
+  .cardLink:hover,
+  .card:focus-visible .cardLink {
     transform: none;
   }
 }

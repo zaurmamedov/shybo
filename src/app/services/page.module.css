@@ -24,13 +24,16 @@
   display: grid;
   min-width: 0;
   height: 100%;
-  grid-template-rows: auto auto auto 1fr;
+  grid-template-rows: auto auto auto 1fr auto;
   align-items: start;
   gap: var(--space-4);
   padding: var(--space-6);
   border: var(--border-default);
   border-radius: var(--radius-medium);
   background: var(--color-white);
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
   transition:
     transform var(--transition-base),
     border-color var(--transition-base),
@@ -72,12 +75,48 @@
   color: var(--color-text-soft);
 }
 
+.serviceLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  justify-self: start;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.serviceLink span {
+  color: var(--color-brand-text);
+  transition: transform var(--transition-fast);
+}
+
+.serviceCard:focus-visible {
+  border-color: var(--color-brand);
+  outline-offset: -4px;
+}
+
+.serviceCard:focus-visible .serviceLink {
+  color: var(--color-brand-text);
+}
+
+.serviceCard:focus-visible .serviceLink span {
+  transform: translateX(0.2rem);
+}
+
 @media (hover: hover) and (pointer: fine) {
   .serviceCard:hover {
     border-color: var(--color-brand);
     background: var(--color-surface);
     box-shadow: var(--shadow-small);
     transform: translateY(-4px);
+  }
+
+  .serviceCard:hover .serviceLink {
+    color: var(--color-brand-text);
+  }
+
+  .serviceCard:hover .serviceLink span {
+    transform: translateX(0.2rem);
   }
 }
 
@@ -104,11 +143,17 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .serviceCard {
+  .serviceCard,
+  .serviceLink,
+  .serviceLink span {
     transition: none;
   }
 
   .serviceCard:hover {
+    transform: none;
+  }
+
+  .serviceCard:focus-visible .serviceLink span {
     transform: none;
   }
 }

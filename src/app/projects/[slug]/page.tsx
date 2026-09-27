@@ -6,7 +6,8 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container/Container";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection/FinalCtaSection";
 import { getProjectBySlug, projects } from "@/data/projects";
-import { createOpenGraphMetadata } from "@/data/seo";
+import { createOpenGraphMetadata, siteUrl } from "@/data/seo";
+import { getServiceBySlug } from "@/data/services";
 
 import styles from "./page.module.css";
 
@@ -59,8 +60,43 @@ export default async function ProjectDetailPage({
     notFound();
   }
 
+  const relatedServices = project.relatedServiceSlugs
+    .map(getServiceBySlug)
+    .filter((service) => service !== undefined);
+  const projectPath = `/projects/${project.slug}`;
+  const breadcrumbsJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Головна",
+        item: `${siteUrl}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Проєкти",
+        item: `${siteUrl}/projects`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: project.title,
+        item: `${siteUrl}${projectPath}`,
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbsJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <article>
         <header className={styles.header}>
           <Container>
@@ -117,6 +153,24 @@ export default async function ProjectDetailPage({
                 );
               })}
             </div>
+
+            <section
+              className={styles.relatedServices}
+              aria-labelledby="related-services-title"
+            >
+              <h2 id="related-services-title">Пов’язані послуги</h2>
+              <div className={styles.serviceLinks}>
+                {relatedServices.map((service) => (
+                  <Link
+                    href={`/services/${service.slug}`}
+                    key={service.slug}
+                  >
+                    <span>{service.title}</span>
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
 
             <Link className={styles.backLink} href="/projects">
               <span aria-hidden="true">←</span> Усі проєкти

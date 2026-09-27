@@ -85,13 +85,17 @@ export default function AboutPage() {
 
           <div className={styles.activityGrid}>
             {services.slice(0, 4).map((service) => (
-              <article className={styles.activityItem} key={service.id}>
+              <Link
+                className={styles.activityItem}
+                href={`/services/${service.slug}`}
+                key={service.slug}
+              >
                 <ServiceIcon name={service.icon} />
                 <div>
                   <h3>{service.title}</h3>
                   <p>{service.description}</p>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
 

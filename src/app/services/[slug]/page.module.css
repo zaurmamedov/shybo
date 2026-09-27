@@ -1,0 +1,266 @@
+.overview,
+.projects,
+.related {
+  padding-block: var(--space-16);
+}
+
+.overviewGrid {
+  display: grid;
+  gap: var(--space-10);
+}
+
+.introduction {
+  display: grid;
+  align-content: start;
+  gap: var(--space-5);
+  max-width: var(--content-narrow);
+}
+
+.introduction p,
+.sectionHeader p,
+.relatedCard p {
+  color: var(--color-text-soft);
+}
+
+.introduction p {
+  font-size: var(--font-size-body-large);
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  justify-self: start;
+  margin-top: var(--space-3);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.backLink span,
+.relatedArrow,
+.projectContent > span span {
+  color: var(--color-brand-text);
+}
+
+.workTypes {
+  display: grid;
+  align-content: start;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  border: var(--border-default);
+  border-radius: var(--radius-medium);
+  background: var(--color-surface);
+}
+
+.workTypesHeader {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.workTypesHeader h2 {
+  font-size: var(--font-size-h4);
+}
+
+.workTypes ul {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.workTypes li {
+  position: relative;
+  padding-left: var(--space-5);
+  color: var(--color-text-soft);
+}
+
+.workTypes li::before {
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 0.5rem;
+  height: 0.125rem;
+  background: var(--color-brand);
+  content: "";
+}
+
+.projects {
+  background: var(--color-surface);
+}
+
+.sectionHeader {
+  display: grid;
+  max-width: var(--content-narrow);
+  gap: var(--space-3);
+  margin-bottom: var(--space-10);
+}
+
+.sectionHeader p {
+  font-size: var(--font-size-body-large);
+}
+
+.projectGrid,
+.relatedGrid {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.projectCard {
+  min-width: 0;
+  overflow: hidden;
+  border: var(--border-default);
+  border-radius: var(--radius-medium);
+  background: var(--color-white);
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.projectCard > a {
+  display: grid;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.projectMedia {
+  position: relative;
+  min-height: 16rem;
+  overflow: hidden;
+  background: var(--color-surface-strong);
+}
+
+.projectMedia img {
+  object-fit: cover;
+  transition: transform var(--transition-base);
+}
+
+.projectContent {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  padding: var(--space-6);
+}
+
+.projectContent p {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+}
+
+.projectContent h3,
+.relatedCard h3 {
+  font-size: var(--font-size-h4);
+}
+
+.projectContent > span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  font-weight: 600;
+}
+
+.relatedCard {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: var(--border-default);
+  border-radius: var(--radius-medium);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.relatedCard svg {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.relatedCard div {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.relatedArrow {
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: transform var(--transition-fast);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .backLink:hover {
+    color: var(--color-brand-text);
+  }
+
+  .projectCard:hover,
+  .relatedCard:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-small);
+    transform: translateY(-4px);
+  }
+
+  .projectCard:hover img {
+    transform: scale(1.02);
+  }
+
+  .relatedCard:hover .relatedArrow {
+    transform: translateX(0.2rem);
+  }
+}
+
+@media (min-width: 48rem) {
+  .overviewGrid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+    gap: var(--space-16);
+  }
+
+  .workTypes {
+    padding: var(--space-8);
+  }
+
+  .projectGrid,
+  .relatedGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .overview,
+  .projects,
+  .related {
+    padding-block: var(--space-24);
+  }
+
+  .relatedGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backLink,
+  .projectCard,
+  .projectMedia img,
+  .relatedCard,
+  .relatedArrow {
+    transition: none;
+  }
+
+  .projectCard:hover,
+  .relatedCard:hover,
+  .projectCard:hover img,
+  .relatedCard:hover .relatedArrow {
+    transform: none;
+  }
+}
