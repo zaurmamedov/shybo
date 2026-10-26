@@ -96,6 +96,7 @@ The interface must remain readable and usable for keyboard, touch, and screen-re
   --color-brand: #f2b705;
   --color-brand-hover: #d89f00;
   --color-brand-active: #bd8b00;
+  --color-brand-text: #806000;
   --color-brand-soft: #fff7d6;
 }
 ```
@@ -107,6 +108,8 @@ Use `--color-brand` for:
 - active navigation accents;
 - small highlights;
 - focus accents where appropriate.
+
+Use `--color-brand-text` when a darker brand-colored text accent is needed on a light background.
 
 Do not use it as the main color for long text.
 
@@ -139,7 +142,7 @@ Do not use it as the main color for long text.
   --color-success: #2f7d4a;
   --color-warning: #a96d00;
   --color-error: #b83a3a;
-  --color-focus: #1f5eff;
+  --color-focus: #0b3d91;
 }
 ```
 
@@ -246,7 +249,21 @@ Not:
 
 unless both lines have genuinely different meanings.
 
-## 4.6 Body copy
+## 4.6 Natural heading wrapping
+
+Heading wrapping is part of the approved responsive design, especially for H1–H3 text.
+
+- Keep meaningful and SEO-relevant heading wording intact; do not rewrite an H1 only to make a screenshot look tidier.
+- Use the shared responsive type scale and give headings enough inline space before reducing font size.
+- Use `text-wrap: balance` for prominent headings where supported.
+- Prefer natural wrapping over manual `<br>` elements, non-breaking phrases, or viewport-specific text variants.
+- Avoid a short isolated final word when it can be prevented by a modest, shared adjustment to the text measure.
+- Do not make heading containers so narrow that long Ukrainian words overflow or break unnaturally.
+- Language-aware hyphenation and an emergency overflow fallback may be used for unusually long words on narrow screens, but ordinary words should not be split merely for decoration.
+- Recheck every route using a shared Hero or heading style after changing its font size, width, line height, or wrapping behavior.
+- Visual balance never overrides semantic heading order, one-H1-per-page rules, accessibility, or factual SEO wording.
+
+## 4.7 Body copy
 
 - Keep paragraphs concise.
 - Recommended maximum width: 60–70 characters per line.
@@ -532,25 +549,22 @@ Preferred:
 
 ## 10.1 Header
 
-The Header should be:
+The existing Header is an approved shared component. It is:
 
 - clean;
 - compact;
-- sticky where appropriate;
-- visually separated with a subtle border or background;
+- sticky on every route;
+- separated from the page with a subtle bottom border and white background;
 - consistent on every route.
 
-Recommended desktop height:
+Implemented heights:
 
 ```text
-80–88px
+Mobile: 76px (`--header-height-mobile: 4.75rem`)
+Desktop: 84px (`--header-height-desktop: 5.25rem`)
 ```
 
-Recommended mobile height:
-
-```text
-72–80px
-```
+Do not replace these with approximate component-local values. If a height changes intentionally, update the shared token, the mobile navigation offset, and this document together.
 
 ## 10.2 Header content
 
@@ -564,28 +578,19 @@ Mobile:
 
 - logo;
 - menu toggle;
-- full-screen or full-width overlay;
+- fixed full-width navigation below the Header;
 - clear close button;
 - compact menu spacing.
 
 ## 10.3 Breakpoint behavior
 
-Do not switch to the mobile menu too early.
-
-Keep desktop navigation visible while it fits comfortably.
-
-The breakpoint should be determined by the real width of:
-
-- logo;
-- navigation;
-- CTA;
-- container padding.
-
-Likely range:
+The approved navigation breakpoint is content-driven and currently implemented at:
 
 ```text
-880–1040px
+58rem / 928px
 ```
+
+Below it, the menu uses the fixed mobile presentation. At and above it, the logo, navigation, and CTA share one horizontal row. Change this breakpoint only after inspecting the complete Header at intermediate widths; keep the CSS media query and the matching `window.matchMedia()` value synchronized.
 
 ## 10.4 Active navigation
 
@@ -612,14 +617,14 @@ Rules:
 - Do not apply decorative filters.
 - Keep enough clear space around the logo.
 
-Recommended displayed width:
+Approved displayed sizing:
 
 ```text
-Desktop: 150–190px
-Mobile: 120–150px
+Logo symbol: 56px mobile, 64px from 928px
+Brand name: 22px mobile, 26px from 928px
 ```
 
-The exact value depends on the final source asset.
+The logo is intentionally composed from the symbol and live text rather than constrained to one fixed total width. Preserve its intrinsic proportions and existing gap.
 
 ---
 
@@ -635,7 +640,7 @@ The Hero must answer immediately:
 
 ## 12.2 Structure
 
-Preferred layout:
+The approved homepage Hero uses a split layout from 768px:
 
 ```text
 Left:
@@ -648,7 +653,9 @@ Right:
 - large construction photograph.
 ```
 
-Alternative full-width Hero is allowed only if text contrast remains excellent.
+The split is implemented as a 5/7 grid. On narrower screens it stacks into one column with text before the image.
+
+Internal pages use the separate approved `InternalPageHero` pattern described below. Do not force the homepage split layout onto internal pages.
 
 ## 12.3 Content limits
 
@@ -675,6 +682,28 @@ Avoid:
 - Use `object-fit: cover`.
 - Preserve important building details.
 - Use a subtle gradient only if required for readability.
+
+## 12.5 Internal page Hero
+
+`InternalPageHero` is shared by the service index, all 13 service detail pages, projects, about, and contacts. Its approved structure differs from the homepage Hero:
+
+- full-width dark Hero rather than a left/right card layout;
+- optional full-bleed image, otherwise the restrained geometric brand graphic;
+- dark readability overlay;
+- breadcrumb navigation, one H1, and one description inside the shared container;
+- no CTA inside this Hero.
+
+Implemented dimensions and content measures:
+
+```text
+Minimum height: 352px mobile, 384px from 768px, 416px from 1024px
+Content padding: 48px mobile, 64px from 768px
+Description measure: 42rem maximum
+H1 measure: min(18ch, 100%)
+H1 size: clamp(2rem, calc(4vw + 1.2rem), 3.75rem)
+```
+
+The H1 must remain left-aligned, use the shared heading weight and line height, and wrap naturally. A width correction made for one long service title must be checked against every route using `InternalPageHero`. Do not add route-specific line breaks or title overrides.
 
 ---
 
@@ -712,7 +741,8 @@ border-color: var(--color-border-strong);
 - Title: 1–2 lines.
 - Description: 2–4 short lines.
 - Avoid detailed service lists on the homepage.
-- No more than 5–6 service cards on desktop.
+- On homepage preview sections, show no more than 5–6 service cards at once.
+- Detailed service-page work cards follow the dedicated shared rules below and may contain additional confirmed items when they remain concise and scannable.
 
 ## 13.4 Icons
 
@@ -952,9 +982,8 @@ Avoid:
 
 ```css
 :root {
-  --transition-fast: 160ms ease;
-  --transition-base: 240ms ease;
-  --transition-slow: 360ms ease;
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
 }
 ```
 
@@ -1112,7 +1141,71 @@ Choose one based on content quality.
 
 ---
 
-# 25. Anti-patterns
+# 25. Shared service detail pages
+
+All 13 routes under `/services/[slug]` use one data-driven page template and one shared visual system. A change to the shared renderer, `InternalPageHero`, service data shape, or service-page CSS affects the complete route set and must be reviewed as such.
+
+## 25.1 Page sequence
+
+Keep this shared order:
+
+1. internal page Hero with breadcrumbs, H1, and concise description;
+2. service overview with introduction and compact work summary;
+3. grouped service-detail sections;
+4. related projects when real matching projects exist;
+5. related services;
+6. final CTA.
+
+Preserve one H1, logical H2/H3 hierarchy, canonical metadata, Service and BreadcrumbList JSON-LD, and static generation.
+
+## 25.2 Detail sections
+
+Each grouped section uses:
+
+- a large H2 and concise contextual paragraph in the left column;
+- compact bordered work cards in the right column;
+- the shared container and spacing tokens;
+- top alignment between the heading column and card column.
+
+Descriptions should add context rather than repeat every adjacent card title. Do not create extra cards for synonyms, room-by-room applications, or keyword variants. When a section contains one meaningful concept, show one concise card without stretching it to imitate a larger grid.
+
+## 25.3 Card styling
+
+Work cards use the approved shared treatment:
+
+- white background;
+- `--border-default`;
+- `--radius-small`;
+- `--space-5` padding;
+- `--space-3` grid gap;
+- semibold text;
+- a short yellow marker aligned with the first text line;
+- content-driven height with no forced equal-height stretching.
+
+Cards are informational, not interactive. Do not add hover elevation, links, icons, or animation unless the content becomes a real action.
+
+## 25.4 Backgrounds and spacing
+
+- The first detail section is white, the second uses `--color-surface`, and the pattern continues by section position.
+- The alternation must not reset according to item count or content type.
+- Adjacent sections use the shared border as a quiet separator.
+- Detail-section vertical padding is 48px below 1024px and 64px from 1024px.
+- Do not add page-specific background overrides or arbitrary vertical offsets.
+
+## 25.5 Responsive behavior
+
+- Below 768px, cards use one column.
+- From 768px, cards use two columns when more than one card exists.
+- Below 1024px, the section order is H2, paragraph, then cards.
+- From 1024px, the heading and content form the approved two-column layout and align at the top.
+- Long card labels wrap naturally; cards keep content-driven heights.
+- Layouts must not overflow at 320px or rely on fixed card heights.
+
+After changing this shared design, inspect all 13 service routes or an equivalently complete automated screenshot set. At minimum include the shortest and longest headings, one-card sections, the densest card grids, routes with related projects, and routes without them.
+
+---
+
+# 26. Anti-patterns
 
 Do not introduce:
 
@@ -1137,7 +1230,7 @@ Do not introduce:
 
 ---
 
-# 26. Implementation checklist
+# 27. Implementation checklist
 
 Before completing any UI task, verify:
 
@@ -1152,13 +1245,17 @@ Before completing any UI task, verify:
 - Is the component using semantic HTML?
 - Are images optimized?
 - Are there any invented company facts?
-- Are `lint` and `build` passing?
+- Are `lint`, TypeScript, and production build checks passing?
+- Was the rendered UI inspected in a browser at the required widths?
+- If browser inspection was unavailable, is visual validation explicitly reported as pending rather than inferred from build success?
 
 ---
 
-# 27. Source of truth
+# 28. Source of truth
 
 This document is the visual source of truth for SHYBO.
+
+Existing design decisions that the user has explicitly reviewed and approved are authoritative. Generic recommendations in this guide must not silently replace those decisions. Reconcile the documentation with the approved implementation unless the user requests a new direction.
 
 When an implementation conflicts with this guide:
 

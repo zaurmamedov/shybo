@@ -148,6 +148,33 @@ export default async function ServiceDetailPage({
           </Container>
         </section>
 
+        <div className={styles.details}>
+          {service.contentSections.map((contentSection, sectionIndex) => {
+            const sectionId = `service-section-${sectionIndex + 1}`;
+
+            return (
+              <section
+                className={styles.detailSection}
+                aria-labelledby={sectionId}
+                key={contentSection.title}
+              >
+                <Container className={styles.detailGrid}>
+                  <div className={styles.detailHeader}>
+                    <h2 id={sectionId}>{contentSection.title}</h2>
+                    <p>{contentSection.description}</p>
+                  </div>
+
+                  <ul className={styles.cardGrid}>
+                    {contentSection.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </Container>
+              </section>
+            );
+          })}
+        </div>
+
         {relatedProjects.length > 0 && (
           <section className={styles.projects} aria-labelledby="related-projects-title">
             <Container>

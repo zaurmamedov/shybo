@@ -4,6 +4,11 @@
   padding-block: var(--space-16);
 }
 
+.detailSection {
+  padding-block: var(--space-12);
+  background: var(--color-white);
+}
+
 .overviewGrid {
   display: grid;
   gap: var(--space-10);
@@ -88,8 +93,82 @@
   content: "";
 }
 
+.details {
+  border-top: var(--border-default);
+}
+
+.detailSection + .detailSection {
+  border-top: var(--border-default);
+}
+
+.detailSection:nth-child(even) {
+  background: var(--color-surface);
+}
+
+.detailGrid {
+  display: grid;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.detailHeader {
+  display: grid;
+  min-width: 0;
+  align-content: start;
+  gap: var(--space-3);
+  max-width: var(--content-narrow);
+}
+
+.detailHeader h2 {
+  max-width: 42rem;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  hyphenate-limit-chars: 15 6 3;
+}
+
+.detailHeader p {
+  max-width: var(--content-narrow);
+  color: var(--color-text-soft);
+  font-size: var(--font-size-body-large);
+}
+
+.cardGrid {
+  display: grid;
+  align-items: start;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cardGrid li {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border: var(--border-default);
+  border-radius: var(--radius-small);
+  background: var(--color-white);
+  font-weight: 600;
+}
+
+.cardGrid li::before {
+  width: 0.5rem;
+  height: 0.125rem;
+  margin-top: 0.7em;
+  background: var(--color-brand);
+  content: "";
+}
+
 .projects {
   background: var(--color-surface);
+}
+
+.related {
+  border-top: var(--border-default);
+  background: var(--color-surface-strong);
 }
 
 .sectionHeader {
@@ -175,6 +254,7 @@
   padding: var(--space-6);
   border: var(--border-default);
   border-radius: var(--radius-medium);
+  background: var(--color-white);
   color: inherit;
   text-decoration: none;
   transition:
@@ -231,7 +311,8 @@
   }
 
   .projectGrid,
-  .relatedGrid {
+  .relatedGrid,
+  .cardGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -241,6 +322,15 @@
   .projects,
   .related {
     padding-block: var(--space-24);
+  }
+
+  .detailSection {
+    padding-block: var(--space-16);
+  }
+
+  .detailGrid {
+    grid-template-columns: minmax(17rem, 0.72fr) minmax(0, 1.28fr);
+    gap: var(--space-16);
   }
 
   .relatedGrid {

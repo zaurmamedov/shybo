@@ -4,14 +4,6 @@
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
 <!-- END:nextjs-agent-rules -->
 
-<!-- BEGIN:nextjs-agent-rules -->
-
-# This is NOT the Next.js you know
-
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-
-<!-- END:nextjs-agent-rules -->
-
 # Shybo project instructions
 
 ## Project overview
@@ -162,6 +154,48 @@ After changing layout or styles, check:
 * working navigation;
 * appropriate spacing;
 * correct stacking of sections and cards.
+
+## Typography and text wrapping
+
+- Treat typography as part of responsive layout quality, not merely as text styling.
+- Use the shared font, type-scale tokens, font weights, and line-height tokens; do not introduce page-specific heading scales without an approved design reason.
+- Review visual line breaks in H1, H2, H3, navigation labels, buttons, and prominent text blocks.
+- Avoid visually awkward heading wraps, including isolated short words on the final line, whenever reasonably preventable.
+- Do not introduce forced line breaks to solve a problem at one viewport width if they cause problems at other widths.
+- Prefer responsive font sizing, appropriate text container widths, balanced text wrapping, and natural Ukrainian phrasing.
+- Use CSS features such as `text-wrap: balance` where appropriate, with sensible fallbacks.
+- Do not arbitrarily shorten meaningful headings or remove important SEO terminology solely to improve wrapping.
+- Check heading readability and wrapping at all supported viewport widths and between breakpoints.
+- Avoid overly narrow text containers combined with oversized typography.
+- Ensure headings remain visually balanced without compromising accessibility or semantic structure.
+
+## Shared page and component consistency
+
+- Pages that share the same template must follow one consistent visual design system.
+- Reuse shared layout components, spacing, typography, card styles, and responsive rules.
+- Do not introduce alternative visual patterns for the same content type without a clear design reason.
+- When changing a shared component, review every route that uses it.
+- Before editing shared components or shared styles, identify all importing components and affected routes. Review the complete affected route set after the change, not only the page where the issue was first reported.
+- For data-driven pages, test representative content extremes: shortest title, longest title, fewest items, most items, and longest descriptions.
+- Ensure alternating section backgrounds, spacing, alignment, and card appearance remain consistent.
+- Avoid unnecessary empty space, oversized cards, and inconsistent content alignment.
+- Do not add filler content solely to make a layout appear balanced.
+
+## Visual validation and definition of done
+
+- Passing ESLint, TypeScript, and production build checks does not establish visual correctness.
+- Static HTML inspection and source-code review also do not establish visual correctness.
+- For UI changes, inspect the actual rendered result in a browser whenever browser access is available.
+- Check representative pages at 320, 375, 480, 768, 1024, 1280, and 1440 px.
+- Review heading wrapping, text overflow, card alignment, spacing, image scaling, section transitions, and navigation.
+- Check intermediate widths when layout behavior suggests a potential breakpoint issue.
+- When a shared component changes, inspect every affected route or perform an equivalent comprehensive visual audit.
+- Use browser automation or screenshots when available, but do not claim visual validation without actually performing it.
+- Visual validation means inspecting the rendered UI at the relevant viewport sizes, including wrapping, overflow, alignment, spacing, and interactive states affected by the change.
+- If browser access is unavailable, perform static CSS and component checks, explicitly report the limitation, and mark visual validation as pending.
+- Do not describe a UI task as fully visually verified when browser inspection was not performed.
+- Do not silently substitute successful build checks for visual testing.
+- In the final report, clearly distinguish automated checks, static code review, and actual browser-based visual validation.
 
 ## Accessibility
 

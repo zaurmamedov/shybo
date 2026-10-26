@@ -58,7 +58,13 @@ export function InternalPageHero({
 
                 return (
                   <li aria-current={isCurrent ? "page" : undefined} key={item.label}>
-                    {item.href ? <Link href={item.href}>{item.label}</Link> : item.label}
+                    {item.href ? (
+                      <Link href={item.href}>
+                        <span className={styles.breadcrumbLabel}>{item.label}</span>
+                      </Link>
+                    ) : (
+                      <span className={styles.breadcrumbLabel}>{item.label}</span>
+                    )}
                   </li>
                 );
               })}
